@@ -1,17 +1,36 @@
 {
-  "name": "hello-world-ts",
-  "version": "1.0.0",
-  "description": "A simple Hello World project in TypeScript",
-  "main": "src/index.ts",
+  "name": "bms-calculator-pro",
+  "version": "2.0.0",
+  "description": "BMS Calculator Pro - Calculatrice professionnelle de nouvelle génération par OpimaCode",
+  "main": "src/index.html",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "start": "live-server src",
+    "dev": "live-server src --port=3000",
+    "build": "npm run build:web && npm run build:pc && npm run build:mobile",
+    "build:web": "echo 'Building web version...' && cp -r src/* dist/",
+    "build:pc": "echo 'Building PC version...' && mkdir -p dist/pc && cp -r src/pc/* dist/pc/",
+    "build:mobile": "echo 'Building mobile version...' && mkdir -p dist/mobile && cp -r src/mobile/* dist/mobile/",
+    "test": "echo 'Running tests...' && npm run lint",
+    "lint": "echo 'Linting code...' && echo 'No linter configured yet'",
+    "deploy": "npm run build && echo 'Build completed. Ready for deployment!'",
+    "clean": "rm -rf dist node_modules package-lock.json",
+    "install:clean": "npm run clean && npm install",
+    "size-check": "echo 'Checking bundle size...' && du -sh dist/",
+    "lighthouse": "echo 'Running Lighthouse audit...' && echo 'Install Lighthouse CLI: npm i -g lighthouse'"
   },
-  "dependencies": {
-    "ts-node": "^10.0.0",
-    "typescript": "^4.0.0"
-  },
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "calculator",
+    "web",
+    "javascript",
+    "professional",
+    "scientific",
+    "opimacode",
+    "bms-calculator"
+  ],
+  "author": "OpimaCode",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
 }
